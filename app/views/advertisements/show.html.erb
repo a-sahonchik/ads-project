@@ -1,0 +1,7 @@
+<h1><%= @advertisement.ad_title %></h1>
+<p><%= @advertisement.ad_text %></p>
+<p><%= link_to 'Edit', edit_advertisement_path(@advertisement) %></p>
+<p><%= link_to 'Destroy', advertisement_path(@advertisement),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></p>
+<p><%= link_to 'Back to advertisements', advertisements_path %></p>

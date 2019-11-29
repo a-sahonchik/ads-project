@@ -1,0 +1,13 @@
+<h1>All ads</h1>
+
+<p><%= link_to 'New advertisement', new_advertisement_path %></p>
+
+<% @advertisements.each do |a| %>
+<p><%= a.ad_title %></p>
+<p><%= a.ad_text %></p>
+<p><%= link_to 'Show', advertisement_path(a) %> |
+  <%= link_to 'Edit', edit_advertisement_path(a) %> |
+  <%= link_to 'Destroy', advertisement_path(a),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></p>
+<% end %>
