@@ -6,6 +6,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    @categories = Category.all
     @advertisements = Advertisement.where(category_id: @category.id)
   end
 

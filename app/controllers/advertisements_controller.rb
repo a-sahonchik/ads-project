@@ -2,6 +2,7 @@ class AdvertisementsController < ApplicationController
 
   def index
     @advertisements = Advertisement.all
+    @categories = Category.all
   end
 
   def show

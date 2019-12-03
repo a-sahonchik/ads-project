@@ -1,6 +1,6 @@
 <%= simple_form_for @advertisement do |f| %>
-  <%= f.input :ad_title, label: "Title",placeholder: "Input string" %>
-  <%= f.input :ad_text, label: "Text",placeholder: "Input your text here" %>
-  <%= f.input :category_id, collection: Category.order(:name), prompt: "Choose category" %>
-  <%= f.button :submit %>
+  <%= f.input :ad_title, label: "Название", placeholder: "Input string" %>
+  <%= f.input :ad_text, label: "Текст объявления", placeholder: "Input your text here" %>
+  <%= f.input :category_id, collection: Category.order(:name), label: "Выберите категорию" %>
+  <%= f.button :submit, value: "Сохранить" %>
 <% end %>

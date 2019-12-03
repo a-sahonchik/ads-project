@@ -1,8 +1,24 @@
+<% breadcrumb @category %>
+
 <h1><%= @category.name %></h1>
 
-<% #Advertisement.where(@advertisement.category.name = @category.name).each do |a| %>
-<% #end %>
-
+<p> = = = = = = = = = = = = = = = = = = = = </p>
+<% @categories.each do |category| %>
+  <% if category.id != @category.id %>
+    <%= link_to category.name.upcase, category_path(category) %>
+  <% else %>
+    <%= category.name.upcase %>
+  <% end %>
+<% end %>
 <p> = = = = = = = = = = = = = = = = = = = = </p>
 
-<%= render '/advertisements/advertisements_list' %>
+<p>&nbsp;</p>
+  <% @advertisements.each do |a| %>
+  <p><%= link_to a.ad_title, advertisement_path(a) %></p>
+  <p><%= a.ad_text %></p>
+  <p><%= link_to 'Редактировать', edit_advertisement_path(a) %> |
+    <%= link_to 'Удалить', advertisement_path(a),
+                method: :delete,
+                data: { confirm: 'Вы уверены?' } %></p>
+  <p>&nbsp;</p>
+<% end %>

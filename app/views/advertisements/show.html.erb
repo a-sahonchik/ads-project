@@ -1,8 +1,9 @@
+<% breadcrumb @advertisement %>
+
 <h1><%= @advertisement.ad_title %></h1>
 <p><%= @advertisement.created_at.to_date.strftime("%d %B, %Y") %> |
-   <%= link_to 'Edit', edit_advertisement_path(@advertisement) %> |
-   <%= link_to 'Destroy', advertisement_path(@advertisement),
+   <%= link_to 'Редактировать', edit_advertisement_path(@advertisement) %> |
+   <%= link_to 'Удалить', advertisement_path(@advertisement),
               method: :delete,
-              data: { confirm: 'Are you sure?' } %></p>
+              data: { confirm: 'Вы уверены?' } %></p>
 <p><%= @advertisement.ad_text %></p>
-<p><%= link_to 'Back to advertisements', advertisements_path %></p>
