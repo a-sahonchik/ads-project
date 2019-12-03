@@ -1,0 +1,5 @@
+<%= simple_form_for @category do |f| %>
+  <%= f.input :name, label: "Category name",placeholder: "Input string" %>
+  <%= f.button :submit %>
+  <%= link_to 'Back to categories', categories_path %>
+<% end %>

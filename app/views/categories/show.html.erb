@@ -1,0 +1,8 @@
+<h1><%= @category.name %></h1>
+
+<% #Advertisement.where(@advertisement.category.name = @category.name).each do |a| %>
+<% #end %>
+
+<p> = = = = = = = = = = = = = = = = = = = = </p>
+
+<%= render '/advertisements/advertisements_list' %>

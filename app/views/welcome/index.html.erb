@@ -1,0 +1,11 @@
+<h1>Welcome</h1>
+
+<h2>Categories:</h2>
+<% @categories.each do |category| %>
+  <p><%= link_to category.name, category_path(category) %></p>
+<% end %>
+
+<h2>Advertisements:</h2>
+<% @advertisements.each do |advertisement| %>
+  <p><%= link_to advertisement.ad_title, advertisement_path(advertisement) %></p>
+<% end %>

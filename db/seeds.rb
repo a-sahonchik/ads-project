@@ -1,7 +1,13 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+Category.create(name: "Покупка")
+Category.create(name: "Продажа")
+Category.create(name: "Аренда")
+Category.create(name: "Работа")
+
+Advertisement.create(ad_title: "Куплю гараж", ad_text: "Куплю гараж. Куплю гараж. Куплю гараж. Куплю гараж. Куплю гараж. Куплю гараж. Куплю гараж. Куплю гараж. Куплю гараж. Куплю гараж. ", category_id: 1)
+Advertisement.create(ad_title: "Куплю гараж №2", ad_text: "Куплю гараж. Куплю гараж. Куплю гараж. Куплю гараж. Куплю гараж. Куплю гараж. Куплю гараж. Куплю гараж. Куплю гараж. Куплю гараж. ", category_id: 1)
+Advertisement.create(ad_title: "Продам гараж", ad_text: "Продам гараж. Продам гараж. Продам гараж. Продам гараж. Продам гараж. Продам гараж. Продам гараж. Продам гараж. Продам гараж. ", category_id: 2)
+Advertisement.create(ad_title: "Продам гараж №2", ad_text: "Продам гараж. Продам гараж. Продам гараж. Продам гараж. Продам гараж. Продам гараж. Продам гараж. Продам гараж. Продам гараж. ", category_id: 2)
+Advertisement.create(ad_title: "Арендую гараж", ad_text: "Арендую гараж. Арендую гараж. Арендую гараж. Арендую гараж. Арендую гараж. Арендую гараж. Арендую гараж. Арендую гараж. Арендую гараж. ", category_id: 3)
+Advertisement.create(ad_title: "Арендую гараж №2", ad_text: "Арендую гараж. Арендую гараж. Арендую гараж. Арендую гараж. Арендую гараж. Арендую гараж. Арендую гараж. Арендую гараж. Арендую гараж. ", category_id: 3)
+Advertisement.create(ad_title: "Хочу работать в гараже", ad_text: "Хочу работать в гараже. Хочу работать в гараже. Хочу работать в гараже. Хочу работать в гараже. Хочу работать в гараже. ", category_id: 4)
+Advertisement.create(ad_title: "Хочу работать в гараже №2", ad_text: "Хочу работать в гараже. Хочу работать в гараже. Хочу работать в гараже. Хочу работать в гараже. Хочу работать в гараже. ", category_id: 4)
