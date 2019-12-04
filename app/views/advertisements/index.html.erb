@@ -2,21 +2,4 @@
 
 <h1>Объявления</h1>
 
-<p><%= link_to 'Добавить объявление', new_advertisement_path %></p>
-
-<p> = = = = = = = = = = = = = = = = = = = = </p>
-<% @categories.each do |category| %>
-  <%= link_to category.name.upcase, category_path(category) %>
-<% end %>
-<p> = = = = = = = = = = = = = = = = = = = = </p>
-
-<p>&nbsp;</p>
-<% @advertisements.each do |advertisement| %>
-  <p>[<%= advertisement.category.name.upcase %>] <%= link_to advertisement.ad_title, advertisement_path(advertisement) %></p>
-  <p><%= advertisement.ad_text %></p>
-  <p><%= link_to 'Редактировать', edit_advertisement_path(advertisement) %> |
-    <%= link_to 'Удалить', advertisement_path(advertisement),
-                method: :delete,
-                data: { confirm: 'Вы уверены?' } %></p>
-  <p>&nbsp;</p>
-<% end %>
+<%= render 'advertisements' %>

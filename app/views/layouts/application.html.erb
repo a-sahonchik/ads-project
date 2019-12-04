@@ -4,13 +4,58 @@
     <title>Ads</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= breadcrumbs separator: " &rsaquo; " %>
-    <%= yield %>
+
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">ADS PROJECT</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="<%= advertisements_path %>">Объявления<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Типы
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <% @categories.each do |category| %>
+                  <a class="dropdown-item" href="<%= category_path(category) %>"><%= category.name %></a>
+                <% end %>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <%= link_to '+ Добавить объявление', new_advertisement_path, class: 'btn btn-success pull-xs-right' %>
+      </nav>
+    </div>
+
+    <div class="container main">
+      <div class="row">
+        <div class="col-md-12">
+          <% flash.each do |name, message| %>
+            <div class="alert alert-<%= name %>">
+              <%= message %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="container main">
+      <%= breadcrumbs separator: " &rsaquo; " %>
+      <%= yield %>
+    </div>
+
   </body>
 </html>

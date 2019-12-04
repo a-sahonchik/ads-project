@@ -8,6 +8,11 @@ crumb :advertisements do
   link "Объявления", advertisements_path
 end
 
+# Categories list
+crumb :categories do
+  link "Категории", categories_path
+end
+
 # Category
 crumb :category do |category|
   link category.name, category_path

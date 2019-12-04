@@ -1,12 +1,11 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_categories, only: [:index, :show, :new, :edit, :create]
 
   def index
-    @categories = Category.all
   end
 
   def show
-    @categories = Category.all
     @advertisements = Advertisement.where(category_id: @category.id)
   end
 
@@ -14,22 +13,25 @@ class CategoriesController < ApplicationController
     @category = Category.new
   end
 
+  def edit
+  end
+
   def create
     @category = Category.new(category_params)
+
     if @category.save
-      redirect_to categories_path
+      redirect_to categories_path, success: 'Тип успешно добавлен'
     else
+      flash[:danger] = 'Ошибка при создании типа'
       render 'new'
     end
   end
 
-  def edit
-  end
-
   def update
     if @category.update(category_params)
-      redirect_to @category
+      redirect_to categories_path, success: 'Тип успешно изменен'
     else
+      flash[:danger] = 'Ошибка при изменении типа'
       render 'edit'
     end
   end
@@ -37,12 +39,17 @@ class CategoriesController < ApplicationController
   def destroy
     @category.destroy
 
-    redirect_to categories_path
+    redirect_to categories_path, success: 'Тип успешно удален'
   end
 
   private
+
     def set_category
       @category = Category.find(params[:id])
+    end
+
+    def set_categories
+      @categories = Category.all
     end
 
     def category_params
