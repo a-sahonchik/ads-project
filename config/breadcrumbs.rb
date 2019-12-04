@@ -15,7 +15,7 @@ end
 
 # Category
 crumb :category do |category|
-  link category.name, category_path
+  link category.name, category
   parent :advertisements
 end
 
