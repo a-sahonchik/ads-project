@@ -2,8 +2,48 @@
 
 <h1>Объявления</h1>
 
-<%= will_paginate @advertisements, renderer: 'BootstrapPaginationHelper::LinkRenderer' %>
+<div class="card card-body bg-light">
+  <% puts @filterrific.inspect %>
+  <%= form_for_filterrific @filterrific do |f| %>
+    <div class="row">
+      <!--<div class="col-md-4">
+        <div class="form-group">
+          <label class="font-weight-bold">Поиск</label>
+          <%#= f.text_field :search_query,
+            :class => 'filterrific-periodically-observed form-control'%>
+        </div>
+      </div>-->
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="font-weight-bold">Тип объявления</label>
+          <%= f.select :with_category_id,
+            @filterrific.select_options[:with_category_id],
+            { :include_blank => '- Тип -' },
+            { :class => 'form-control' } %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="font-weight-bold">Сортировка</label>
+          <%= f.select :sorted_by,
+            @filterrific.select_options[:sorted_by],
+            {},
+            { :class => 'form-control' } %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col-md-10">
+      <%= page_entries_info @advertisements, :model => 'advertisement', :class => 'align-middle' %>
+    </div>
+    <div class="col-md-2">
+      <%= link_to "Сбросить фильр", reset_filterrific_url, :class => 'btn btn-secondary align-middle' %>
+    </div>
+  </div>
+</div>
 
-<%= render 'advertisements' %>
-
-<%= will_paginate @advertisements, renderer: 'BootstrapPaginationHelper::LinkRenderer' %>
+<div id="results">
+  <%= render :partial => 'advertisements/list',
+    :locals => { :advertisements => @advertisements } %>
+</div>

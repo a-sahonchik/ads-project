@@ -1,0 +1,4 @@
+<% js = escape_javascript(
+  render( :partial => 'advertisements/list' )
+) %>
+$("#results").html("<%= js %>");

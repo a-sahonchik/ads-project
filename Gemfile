@@ -73,3 +73,6 @@ gem 'jquery-rails'
 
 #pagination
 gem 'will_paginate', '~> 3.1.0'
+
+#filter
+gem 'filterrific'

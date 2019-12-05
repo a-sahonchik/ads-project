@@ -3,7 +3,20 @@ class AdvertisementsController < ApplicationController
   before_action :set_categories
 
   def index
-    @advertisements = Advertisement.paginate(page: params[:page], per_page: 10)
+    (@filterrific = initialize_filterrific(
+      Advertisement,
+      params[:filterrific],
+      select_options: {
+        sorted_by: Advertisement.options_for_sorted_by,
+        with_category_id: Category.options_for_select,
+      },
+    )) || return
+    @advertisements = @filterrific.find.page(params[:page])
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show
