@@ -1,6 +1,5 @@
 <h1>Приветики</h1>
 
 <h2>Новые объявления:</h2>
-<% @advertisements.order(:id).reverse.first(5).each do |advertisement| %>
-  <p><%= link_to advertisement.ad_title, advertisement_path(advertisement) %></p>
-<% end %>
+
+<%= render 'advertisements/advertisements' %>

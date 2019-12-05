@@ -3,7 +3,7 @@ class AdvertisementsController < ApplicationController
   before_action :set_categories
 
   def index
-    @advertisements = Advertisement.all
+    @advertisements = Advertisement.paginate(page: params[:page], per_page: 10)
   end
 
   def show

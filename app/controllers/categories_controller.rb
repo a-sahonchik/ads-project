@@ -6,7 +6,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @advertisements = Advertisement.where(category_id: @category.id)
+    @advertisements = Advertisement.where(category_id: @category.id).paginate(page: params[:page], per_page: 10)
   end
 
   def new

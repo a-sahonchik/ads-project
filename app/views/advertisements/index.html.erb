@@ -2,4 +2,8 @@
 
 <h1>Объявления</h1>
 
+<%= will_paginate @advertisements, renderer: 'BootstrapPaginationHelper::LinkRenderer' %>
+
 <%= render 'advertisements' %>
+
+<%= will_paginate @advertisements, renderer: 'BootstrapPaginationHelper::LinkRenderer' %>

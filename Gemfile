@@ -70,3 +70,6 @@ gem "gretel"
 #bootstrap
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
+
+#pagination
+gem 'will_paginate', '~> 3.1.0'
