@@ -15,6 +15,10 @@
   </section>
 
   <section class="advertisement-body">
-      <%= @advertisement.ad_text %>
+      <p><%= @advertisement.ad_text %></p>
+  </section>
+
+  <section class="advertisement-author">
+      <p>Автор: <%= link_to @advertisement.user.username, @advertisement.user %></p>
   </section>
 </article>

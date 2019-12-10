@@ -1,5 +1,9 @@
 class Advertisement < ApplicationRecord
+
+  resourcify
+
   belongs_to :category
+  belongs_to :user
 
   validates :ad_title, presence: true,
                     length: { minimum: 5 , maximum: 50}

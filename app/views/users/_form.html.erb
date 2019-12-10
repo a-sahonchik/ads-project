@@ -1,0 +1,13 @@
+<%= simple_form_for(@user) do |f| %>
+
+  <%= f.input :email, required: true, autofocus: true %>
+
+  <%= f.input :username, required: true, autofocus: true, label: "Имя пользователя" %>
+
+  <%= f.association :roles, as: :check_boxes, label: "Роль" %>
+
+  <%= f.button :submit, "Сохранить", class: "btn btn-primary" %>
+
+  <%= link_to "Назад", :back, class: "btn btn-outline-secondary" %>
+
+<% end %>

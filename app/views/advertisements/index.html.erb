@@ -2,17 +2,11 @@
 
 <h1>Объявления</h1>
 
+<%= link_to 'Добавить объявление', new_advertisement_path, class: "btn btn-primary" %>
 <div class="card card-body bg-light">
   <% puts @filterrific.inspect %>
   <%= form_for_filterrific @filterrific do |f| %>
     <div class="row">
-      <!--<div class="col-md-4">
-        <div class="form-group">
-          <label class="font-weight-bold">Поиск</label>
-          <%#= f.text_field :search_query,
-            :class => 'filterrific-periodically-observed form-control'%>
-        </div>
-      </div>-->
       <div class="col-md-6">
         <div class="form-group">
           <label class="font-weight-bold">Тип объявления</label>

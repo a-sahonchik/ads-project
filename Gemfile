@@ -76,3 +76,8 @@ gem 'will_paginate', '~> 3.1.0'
 
 #filter
 gem 'filterrific'
+
+#authorization and authentication
+gem 'devise'
+gem 'cancancan'
+gem 'rolify'

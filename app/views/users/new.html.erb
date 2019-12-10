@@ -1,0 +1,21 @@
+<h1>Новый пользователь</h1>
+
+<%= simple_form_for(@user) do |f| %>
+
+  <%= f.input :email, required: true, autofocus: true %>
+
+  <%= f.input :username, required: true, autofocus: true, label: "Имя пользователя" %>
+
+  <%= f.input :password,
+              required: true,
+              hint: ("(минимум #{@minimum_password_length} символов)" if @minimum_password_length),
+              input_html: { autocomplete: "new-password" },
+              label: 'Пароль' %>
+
+  <%= f.association :roles, as: :check_boxes, label: "Роль" %>
+
+  <%= f.button :submit, "Сохранить", class: "btn btn-primary" %>
+
+  <%= link_to "Назад", :back, class: "btn btn-outline-secondary" %>
+
+<% end %>

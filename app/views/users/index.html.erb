@@ -1,0 +1,31 @@
+<h1>Пользователи</h1>
+
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Имя пользователя</th>
+      <th scope="col">Email</th>
+      <th scope="col">Роль</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each_with_index do |user, index| %>
+      <tr>
+        <th scope="row"><%= index + 1 %></th>
+        <td><%= link_to user.username, user_path(user) %></td>
+        <td><%= user.email %></td>
+        <td><%= user.roles.first.name %></td>
+        <td>
+          <%= link_to "Редактировать", edit_user_path(user), class: 'btn btn-warning' %>
+          <%= link_to 'Удалить', admin_destroy_user_path(user), class: 'btn btn-danger',
+              method: :delete,
+              data: { confirm: 'Вы уверены?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "Добавить пользователя", new_user_path, class: 'btn btn-primary' %>

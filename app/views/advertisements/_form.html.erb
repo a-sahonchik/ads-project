@@ -1,20 +1,12 @@
-<%= simple_form_for @advertisement, defaults: { input_html: { class: 'form-control' } } do |f| %>
+<%= simple_form_for @advertisement do |f| %>
 
-  <div class="form-group">
-    <%= f.input :ad_title, label: 'Название объявления', placeholder: 'Введите название объявления' %>
-  </div>
+  <%= f.input :ad_title, label: 'Название объявления', placeholder: 'Введите название объявления' %>
 
-  <div class="form-group">
   <%= f.input :ad_text, label: 'Текст объявления', placeholder: 'Введите текст объявления', input_html: { id: 'ads_text', onkeyup: 'advertisement_text_length()' } %>
   <span class="text_length_counter" id="ads_text_length"></span>
-  </div>
 
-  <div class="form-group">
   <%= f.input :category_id, collection: Category.order(:name), label: 'Выберите категорию' %>
-  </div>
 
-  <div class="form-group buttons">
   <%= f.button :submit, value: 'Сохранить', class: 'btn btn-primary' %>
   <%= link_to 'Назад', :back, class: 'btn btn-outline-secondary' %>
-  </div>
 <% end %>

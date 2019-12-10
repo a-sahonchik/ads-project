@@ -1,0 +1,37 @@
+<h1>Редактировать профиль</h1>
+
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
+  <%= f.input :email, required: true, autofocus: true %>
+
+  <%= f.input :username, required: true, autofocus: true, label: "Имя пользователя" %>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+  <% end %>
+
+  <%= f.input :password,
+              hint: "оставьте поле пустым, если не хотите менять пароль",
+              required: false,
+              input_html: { autocomplete: "new-password", class: "form-control" },
+              label: "Пароль" %>
+
+  <%= f.input :password_confirmation,
+              required: false,
+              input_html: { autocomplete: "new-password", class: "form-control" },
+              label: "Подтвердите пароль" %>
+
+  <%= f.input :current_password,
+              hint: "введите текущий пароль для сохранения изменений",
+              required: true,
+              input_html: { autocomplete: "current-password", class: "form-control" },
+              label: "Текущий пароль" %>
+
+  <%= f.button :submit, "Сохранить", class: "btn btn-primary" %>
+
+  <%= link_to "Назад", :back, class: "btn btn-outline-secondary" %>
+
+<% end %>
+
+<%= link_to "Удалить мой аккаунт", registration_path(resource_name), data: { confirm: "Вы уверены?" }, method: :delete, class: "btn btn-danger" %>
+

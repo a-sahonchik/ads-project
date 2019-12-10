@@ -5,12 +5,6 @@
       <%= link_to advertisement.category.name, category_path(advertisement), class: "badge badge-success" %>
       <small>
         <time><%= advertisement.created_at.to_date.strftime("%d %B, %Y") %></time>
-        |
-        <%= link_to 'Редактировать', edit_advertisement_path(advertisement) %>
-        |
-        <%= link_to 'Удалить', advertisement_path(advertisement),
-                  method: :delete,
-                  data: { confirm: 'Вы уверены?' } %>
       </small>
     </section>
 

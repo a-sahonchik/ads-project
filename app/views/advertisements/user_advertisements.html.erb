@@ -1,0 +1,8 @@
+<h1>Мои объявления</h1>
+
+<% if @advertisements.any? %>
+<%= render 'advertisements' %>
+<% else %>
+<p>У вас пока нет объявлений.</p>
+<%= link_to 'Добавить объявление', new_advertisement_path, class: "btn btn-primary" %>
+<% end %>

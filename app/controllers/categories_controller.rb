@@ -2,6 +2,12 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
   before_action :set_categories, only: [:index, :show, :new, :edit, :create]
 
+  load_and_authorize_resource
+
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to request.referrer, alert: exception.message
+  end
+
   def index
   end
 
@@ -37,9 +43,13 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
+    if @category.advertisements.any?
+      redirect_to categories_path, danger: 'Нельзя удалить, есть вложенные объявления!'
+    else
     @category.destroy
 
     redirect_to categories_path, success: 'Тип успешно удален'
+    end
   end
 
   private

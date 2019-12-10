@@ -2,6 +2,14 @@ class AdvertisementsController < ApplicationController
   before_action :set_advertisement, only: [:show, :edit, :update, :destroy]
   before_action :set_categories
 
+  load_and_authorize_resource
+
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to request.referrer, alert: exception.message
+  end
+
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index
     (@filterrific = initialize_filterrific(
       Advertisement,
@@ -31,11 +39,12 @@ class AdvertisementsController < ApplicationController
 
   def create
     @advertisement = Advertisement.new(advertisement_params)
+    @advertisement.user = current_user
 
     if @advertisement.save
       redirect_to @advertisement, success: 'Объявление успешно создано'
     else
-      flash[:danger] = 'Ошибка при изменении объявления'
+      flash[:danger] = 'Ошибка при создании объявления'
       render 'new'
     end
   end
@@ -53,6 +62,9 @@ class AdvertisementsController < ApplicationController
     @advertisement.destroy
 
     redirect_to advertisements_path, success: 'Объявление успешно удалено'
+  end
+
+  def user_advertisements
   end
 
   private
