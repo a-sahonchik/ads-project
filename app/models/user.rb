@@ -5,6 +5,8 @@ class User < ApplicationRecord
 
   has_many :advertisements, dependent: :destroy
 
+  validates :username, presence: true
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
