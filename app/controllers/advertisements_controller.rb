@@ -12,7 +12,7 @@ class AdvertisementsController < ApplicationController
 
   def index
     (@filterrific = initialize_filterrific(
-      Advertisement,
+      Advertisement.where(:state => :published),
       params[:filterrific],
       select_options: {
         sorted_by: Advertisement.options_for_sorted_by,
@@ -65,6 +65,12 @@ class AdvertisementsController < ApplicationController
   end
 
   def user_advertisements
+    @advertisements = Advertisement.where(user_id: current_user.id)
+    @states = Advertisement.state_machine.states.map &:value
+  end
+
+  def opened_advertisements
+    @advertisements = Advertisement.where(state: 'opened')
   end
 
   private
@@ -78,6 +84,6 @@ class AdvertisementsController < ApplicationController
     end
 
     def advertisement_params
-      params.require(:advertisement).permit(:ad_title, :ad_text, :category_id)
+      params.require(:advertisement).permit(:ad_title, :ad_text, :category_id, :state_event)
     end
 end

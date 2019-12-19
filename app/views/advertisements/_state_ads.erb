@@ -1,0 +1,16 @@
+<% @advertisements.where(state: state).each do |advertisement| %>
+  <article class="advertisement">
+    <section class="advertisement-head">
+      <h2><%= link_to advertisement.ad_title, advertisement_path(advertisement) %></h2>
+      <%= link_to advertisement.category.name, category_path(advertisement), class: "badge badge-success" %>
+      <small>
+        <time><%= advertisement.created_at.to_date.strftime("%d %B, %Y") %></time>
+      </small>
+    </section>
+
+    <section class="advertisement-summary">
+      <%= advertisement.ad_text %>
+    </section>
+
+  </article>
+<% end %>

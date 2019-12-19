@@ -5,12 +5,7 @@
     <h1><%= @advertisement.ad_title %></h1>
     <small>
       <time><%= @advertisement.created_at.to_date.strftime("%d %B, %Y") %></time>
-      |
-      <%= link_to 'Редактировать', edit_advertisement_path %>
-      |
-      <%= link_to 'Удалить', advertisement_path,
-                method: :delete,
-                data: { confirm: 'Вы уверены?' } %>
+      <span>[<%= @advertisement.state %>]</span>
     </small>
   </section>
 
@@ -20,5 +15,31 @@
 
   <section class="advertisement-author">
       <p>Автор: <%= link_to @advertisement.user.username, @advertisement.user %></p>
+  </section>
+
+  <section class="ads-btn">
+    <% if user_signed_in? %>
+      <% if @advertisement.can_be_drafted?(current_user) %>
+        <%= link_to 'Перенести в черновик', [@advertisement, advertisement: {state_event: :change}], method: :patch, class: 'btn btn-primary' %>
+      <% end %>
+      <% if @advertisement.can_be_started?(current_user) %>
+        <%= link_to 'Отправить на модерацию', [@advertisement, advertisement: {state_event: :start}], method: :patch, class: 'btn btn-primary' %>
+      <% end %>
+      <% if @advertisement.can_be_approved?(current_user) %>
+        <%= link_to 'Одобрить', [@advertisement, advertisement: {state_event: :approve}], method: :patch, class: 'btn btn-success' %>
+      <% end %>
+      <% if @advertisement.can_be_rejected?(current_user) %>
+        <%= link_to 'Отклонить', [@advertisement, advertisement: {state_event: :reject}], method: :patch, class: 'btn btn-danger' %>
+      <% end %>
+      <% if @advertisement.can_be_edited?(current_user) %>
+        <%= link_to 'Редактировать', edit_advertisement_path, class: "btn btn-warning" %>
+      <% end %>
+      <% if @advertisement.can_be_deleted?(current_user) %>
+        <%= link_to 'Удалить', advertisement_path,
+                    method: :delete,
+                    class: 'btn btn-outline-danger',
+                    data: { confirm: 'Вы уверены?' } %>
+      <% end %>
+    <% end %>
   </section>
 </article>

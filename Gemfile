@@ -94,3 +94,9 @@ gem 'faker'
 group :development, :test do
   gem 'factory_bot_rails'
 end
+
+#states
+gem 'state_machines-activerecord'
+
+#cron jobs
+gem 'whenever', require: false

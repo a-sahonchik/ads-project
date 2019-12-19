@@ -20,12 +20,15 @@
             <% end %>
           </div>
         </li>
-        <% if user_signed_in? and current_user.has_role? :admin %>
+        <% if user_signed_in? && current_user.has_role?(:admin) %>
           <li class="nav-item">
              <%= link_to "Пользователи", users_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
              <%= link_to "Все типы", categories_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+             <%= link_to "Новые объявления", opened_advertisements_path, class: "nav-link" %>
           </li>
         <% end %>
       </ul>
@@ -37,7 +40,7 @@
               <%= current_user.email %>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <% if current_user.has_role? :user %>
+              <% if current_user.has_role?(:user) %>
                 <%= link_to 'Мои объявления', custom_user_advertisements_path, class: "dropdown-item" %>
               <% end %>
               <%= link_to 'Редактировать профиль', edit_user_registration_path, class: "dropdown-item" %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_09_131431) do
+ActiveRecord::Schema.define(version: 2019_12_18_035427) do
 
   create_table "advertisements", force: :cascade do |t|
     t.string "ad_title"
@@ -19,7 +19,9 @@ ActiveRecord::Schema.define(version: 2019_12_09_131431) do
     t.datetime "updated_at", null: false
     t.integer "category_id"
     t.integer "user_id"
+    t.string "state"
     t.index ["category_id"], name: "index_advertisements_on_category_id"
+    t.index ["state"], name: "index_advertisements_on_state"
     t.index ["user_id"], name: "index_advertisements_on_user_id"
   end
 

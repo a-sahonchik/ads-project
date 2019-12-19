@@ -1,8 +1,22 @@
 <h1>Мои объявления</h1>
 
-<% if @advertisements.any? %>
-<%= render 'advertisements' %>
-<% else %>
-<p>У вас пока нет объявлений.</p>
-<%= link_to 'Добавить объявление', new_advertisement_path, class: "btn btn-primary" %>
-<% end %>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <%- @states.each do |state| %>
+  <li class="nav-item">
+    <a class="nav-link <%= "active" if state == @states.first %>" id="<%= state %>-tab" data-toggle="tab" href="#<%= state %>" role="tab" aria-controls="<%= state %>" <%= "aria-selected=\"true\"" if state == @states.first %>><%= state.capitalize %></a>
+  </li>
+  <% end %>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <%- @states.each do |state| %>
+    <div class="tab-pane fade <%= "active show" if state == @states.first %>" id="<%= state %>" role="tabpanel" aria-labelledby="<%= state %>-tab">
+      <% if @advertisements.where(state: state).any? %>
+        <%= render partial: 'state_ads', :locals => { :state => state } %>
+      <% else %>
+        <p>No advertisements with state "<%= state %>"</p>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+
