@@ -5,7 +5,11 @@ class AdvertisementsController < ApplicationController
   load_and_authorize_resource
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to request.referrer, alert: exception.message
+    if request.referrer
+      redirect_to request.referrer, alert: exception.message
+    else
+      render file: "#{Rails.root}/public/403.html" , status: 403
+    end
   end
 
   before_action :authenticate_user!, except: [:index, :show]
@@ -65,7 +69,7 @@ class AdvertisementsController < ApplicationController
   end
 
   def user_advertisements
-    @advertisements = Advertisement.where(user_id: current_user.id)
+    @advertisements = Advertisement.where(user_id: current_user.id).order("updated_at DESC")
     @states = Advertisement.state_machine.states.map &:value
   end
 

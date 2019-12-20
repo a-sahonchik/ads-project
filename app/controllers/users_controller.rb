@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @advertisements = Advertisement.where(user_id: @user.id)
+    @advertisements = Advertisement.where(user_id: @user.id).order("updated_at DESC")
   end
 
   def new

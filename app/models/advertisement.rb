@@ -92,11 +92,7 @@ class Advertisement < ApplicationRecord
     (current_user.user? && current_user.id == self.user_id) || current_user.admin?
   end
 
-  def can_be_rejected?(current_user)
-    current_user.admin? && self.state == 'opened'
-  end
-
-  def can_be_approved?(current_user)
+  def can_be_approved_or_rejected?(current_user)
     current_user.admin? && self.state == 'opened'
   end
 

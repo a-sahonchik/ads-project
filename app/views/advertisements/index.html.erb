@@ -2,7 +2,9 @@
 
 <h1>Объявления</h1>
 
-<%= link_to 'Добавить объявление', new_advertisement_path, class: "btn btn-primary" %>
+<% if user_signed_in? && current_user.has_role?(:user) %>
+  <%= link_to 'Добавить объявление', new_advertisement_path, class: "btn btn-primary" %>
+<% end %>
 <div class="card card-body bg-light">
   <% puts @filterrific.inspect %>
   <%= form_for_filterrific @filterrific do |f| %>

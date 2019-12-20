@@ -25,10 +25,8 @@
       <% if @advertisement.can_be_started?(current_user) %>
         <%= link_to 'Отправить на модерацию', [@advertisement, advertisement: {state_event: :start}], method: :patch, class: 'btn btn-primary' %>
       <% end %>
-      <% if @advertisement.can_be_approved?(current_user) %>
+      <% if @advertisement.can_be_approved_or_rejected?(current_user) %>
         <%= link_to 'Одобрить', [@advertisement, advertisement: {state_event: :approve}], method: :patch, class: 'btn btn-success' %>
-      <% end %>
-      <% if @advertisement.can_be_rejected?(current_user) %>
         <%= link_to 'Отклонить', [@advertisement, advertisement: {state_event: :reject}], method: :patch, class: 'btn btn-danger' %>
       <% end %>
       <% if @advertisement.can_be_edited?(current_user) %>

@@ -2,8 +2,7 @@
 
   <%= f.input :ad_title, label: 'Название объявления', placeholder: 'Введите название объявления' %>
 
-  <%= f.input :ad_text, label: 'Текст объявления', placeholder: 'Введите текст объявления', input_html: { id: 'ads_text', onkeyup: 'advertisement_text_length()' } %>
-  <span class="text_length_counter" id="ads_text_length"></span>
+  <%= f.input :ad_text, label: 'Текст объявления', hint: "", hint_html: { id: "ads_text_length" }, placeholder: 'Введите текст объявления', input_html: { id: 'ads_text', onkeyup: 'advertisement_text_length()' } %>
 
   <%= f.input :category_id, collection: Category.order(:name), label: 'Выберите категорию' %>
 
