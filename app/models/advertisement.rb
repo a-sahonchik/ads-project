@@ -5,7 +5,8 @@ class Advertisement < ApplicationRecord
   belongs_to :category
   belongs_to :user
 
-  mount_uploader :picture, PictureUploader
+  mount_uploaders :pictures, PictureUploader
+  serialize :pictures, JSON
 
   validates :ad_title, presence: true,
                     length: { minimum: 5 , maximum: 50}

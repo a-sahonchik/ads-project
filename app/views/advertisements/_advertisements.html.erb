@@ -1,7 +1,7 @@
 <% @advertisements.each do |advertisement| %>
   <article class="advertisement">
-    <% if advertisement.picture? %>
-      <%= image_tag advertisement.picture.url, class: 'ads-picture' %>
+    <% if advertisement.pictures.any? %>
+      <%= image_tag advertisement.pictures.first.url, class: 'ads-picture' %>
     <% else %>
       <%= image_tag "/missing-image.png", class: 'ads-picture' %>
     <% end %>

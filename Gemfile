@@ -101,5 +101,7 @@ gem 'state_machines-activerecord'
 #cron jobs
 gem 'whenever', require: false
 
+#multiple images download
 gem 'carrierwave'
 gem "rmagick"
+gem 'jquery-ui-rails'

@@ -10,12 +10,14 @@
   </section>
 
   <section class="advertisement-body">
-    <% if @advertisement.picture? %>
-      <p><%= image_tag @advertisement.picture.url, class: 'ads-picture' %></p>
-    <% else %>
-      <p><%= image_tag "/missing-image.png", class: 'ads-picture' %></p>
+  <% if @advertisement.pictures.any? %>
+    <% @advertisement.pictures.each do |picture| %>
+      <%= image_tag picture.url, class: 'ads-picture' %></p>
     <% end %>
-    <p><%= @advertisement.ad_text %></p>
+  <% else %>
+    <%= image_tag "/missing-image.png", class: 'ads-picture' %>
+  <% end %>
+  <p><%= @advertisement.ad_text %></p>
   </section>
 
   <section class="advertisement-author">

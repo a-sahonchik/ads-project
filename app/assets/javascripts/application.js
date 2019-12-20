@@ -15,7 +15,23 @@
 //= require turbolinks
 //= require_tree .
 //= require jquery3
+//= require jquery-ui/widgets/sortable
 //= require popper
 //= require bootstrap
 
 //= require filterrific/filterrific-jquery
+
+$(document).on('turbolinks:load', function () {
+  $('.image-sortable').sortable({
+    axis: 'y',
+    items: '.image'
+  });
+
+  $('.add-image').click(function () {
+    $('.image-sortable').append('<div class="image ui-sortable-handle"><input multiple="multiple" type="file" name="advertisement[pictures][]"></div>');
+  });
+
+  $('.remove-image').click(function () {
+    $(this).parent('.image').remove();
+  });
+});

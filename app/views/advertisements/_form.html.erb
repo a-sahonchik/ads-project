@@ -6,7 +6,21 @@
 
   <%= f.input :category_id, collection: Category.order(:name), label: 'Выберите категорию' %>
 
-  <%= f.file_field :picture, multiple: true %>
+  <div class="field">
+    <div class="image-sortable">
+      <% @advertisement.pictures.each do |picture| %>
+        <div class="image">
+          <%= hidden_field :advertisement, :pictures, multiple: true, value:  picture.cache_name || picture.identifier %>
+          <%= image_tag picture.url(:thumb) %>
+          <button type="button" class="remove-image btn btn-outline-danger">Удалить</button>
+        </div>
+      <% end %>
+      <div class="image">
+        <%= f.file_field :pictures, multiple: true %>
+      </div>
+    </div>
+    <button type="button" class="add-image btn btn-primary">Ещё картинки!</button>
+  </div>
 
   <%= f.button :submit, value: 'Сохранить', class: 'btn btn-primary' %>
   <%= link_to 'Назад', :back, class: 'btn btn-outline-secondary' %>
