@@ -1,6 +1,6 @@
 <% breadcrumb @advertisement %>
 
-<article class="advertisement">
+<article class="advertisement-card">
   <section class="advertisement-head">
     <h1><%= @advertisement.ad_title %></h1>
     <small>
@@ -10,7 +10,12 @@
   </section>
 
   <section class="advertisement-body">
-      <p><%= @advertisement.ad_text %></p>
+    <% if @advertisement.picture? %>
+      <p><%= image_tag @advertisement.picture.url, class: 'ads-picture' %></p>
+    <% else %>
+      <p><%= image_tag "/missing-image.png", class: 'ads-picture' %></p>
+    <% end %>
+    <p><%= @advertisement.ad_text %></p>
   </section>
 
   <section class="advertisement-author">

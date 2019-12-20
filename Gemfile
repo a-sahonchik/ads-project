@@ -100,3 +100,6 @@ gem 'state_machines-activerecord'
 
 #cron jobs
 gem 'whenever', require: false
+
+gem 'carrierwave'
+gem "rmagick"

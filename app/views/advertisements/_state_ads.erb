@@ -1,6 +1,12 @@
 <% @advertisements.where(state: state).each do |advertisement| %>
   <article class="advertisement">
-    <section class="advertisement-head">
+    <% if advertisement.picture? %>
+      <%= image_tag advertisement.picture.url(:thumb), class: 'ads-picture' %>
+    <% else %>
+      <%= image_tag "/missing-image.png", class: 'ads-picture' %>
+    <% end %>
+    <div class="ads-body">
+      <section class="advertisement-head">
       <h2><%= link_to advertisement.ad_title, advertisement_path(advertisement) %></h2>
       <%= link_to advertisement.category.name, category_path(advertisement), class: "badge badge-success" %>
       <small>
@@ -11,6 +17,6 @@
     <section class="advertisement-summary">
       <%= advertisement.ad_text %>
     </section>
-
+    </div>
   </article>
 <% end %>
