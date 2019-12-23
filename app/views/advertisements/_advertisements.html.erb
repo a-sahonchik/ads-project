@@ -1,11 +1,11 @@
 <% @advertisements.each do |advertisement| %>
   <article class="advertisement">
     <% if advertisement.pictures.any? %>
-      <%= image_tag advertisement.pictures.first.url, class: 'ads-picture' %>
+      <%= image_tag advertisement.pictures.first.url, class: 'ads-picture col-12 col-md-3' %>
     <% else %>
-      <%= image_tag "/missing-image.png", class: 'ads-picture' %>
+      <%= image_tag "/missing-image.png", class: 'ads-picture col-12 col-md-3' %>
     <% end %>
-    <div class="ads-body">
+    <div class="ads-body col-12 col-md-9">
       <section class="advertisement-head">
         <h2><%= link_to advertisement.ad_title, advertisement_path(advertisement) %></h2>
         <%= link_to advertisement.category.name, category_path(advertisement), class: "badge badge-success" %>

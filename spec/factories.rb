@@ -14,4 +14,8 @@ FactoryBot.define do
     ad_text {Faker::String.random(length: 100..1000)}
     category_id { 1 }
   end
+
+  factory :attachment do
+   pictures {Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/files/mojave.jpg')))}
+ end
 end

@@ -4,9 +4,10 @@ article.advertisement
   border-bottom: 1px solid lightblue
   display: flex
   .ads-picture
-    width: 20%
     float: left
     margin-right: 3em
+    height: 100%
+    width: 100%
   h1, h2
     margin-bottom: 0
   section.advertisement-summary
@@ -39,3 +40,7 @@ article.advertisement-card
   padding-bottom: 2em
   .remove-image
     margin: 0 2em
+
+@media screen and (max-width: 500px)
+  article.advertisement
+    display: inline-block
