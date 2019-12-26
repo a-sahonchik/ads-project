@@ -1,0 +1,26 @@
+h1
+  | Мои объявления
+ul#myTab.nav.nav-tabs[role="tablist"]
+  - @states.each do |state|
+    li.nav-item
+      a [
+        class = (state == @states.first ? 'nav-link active' : 'nav-link')
+        id = "#{state} tab"
+        data-toggle='tab'
+        href = "##{state}"
+        role = "tab"
+        aria-controls = state
+        aria-selected = (state == @states.first && "true")
+      ] = state.capitalize
+#myTabContent.tab-content
+  - @states.each do |state|
+    div [
+    class = (state == @states.first ? "tab-pane fade active show" : "tab-pane fade")
+    id = state
+    role = "tabpanel"
+    aria-labelledby = "state-tab"
+    ]
+      - if @advertisements.where(state: state).any?
+        = render partial: 'state_ads', :locals => { :state => state }
+      - else
+        p No advertisements with state #{state}

@@ -110,3 +110,6 @@ gem 'rmagick'
 
 # Ruby Style
 gem 'rubocop', require: false
+
+# Slim views
+gem 'slim'
