@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   rolify
 
@@ -19,7 +21,6 @@ class User < ApplicationRecord
   end
 
   def assign_default_role
-    self.add_role(:user) if self.roles.blank?
+    add_role(:user) if roles.blank?
   end
-
 end

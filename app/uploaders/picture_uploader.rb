@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PictureUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   include CarrierWave::RMagick
@@ -15,12 +17,12 @@ class PictureUploader < CarrierWave::Uploader::Base
 
   # Add a white list of extensions which are allowed to be uploaded.
   def extension_whitelist
-    %w(jpg jpeg gif png)
+    %w[jpg jpeg gif png]
   end
 
   process resize_to_fit: [800, 800]
 
   version :thumb do
-    process resize_to_fit: [250,250]
+    process resize_to_fit: [250, 250]
   end
 end

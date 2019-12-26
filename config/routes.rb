@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  devise_for :users, :path_prefix => 'my'
+  devise_for :users, path_prefix: 'my'
   resources :users
 
   get 'welcome/index'

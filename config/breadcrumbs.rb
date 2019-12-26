@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 # Root
 crumb :root do
-  link "Главная", root_path
+  link 'Главная', root_path
 end
 
 # Advertisements list
 crumb :advertisements do
-  link "Объявления", advertisements_path
+  link 'Объявления', advertisements_path
 end
 
 # Categories list
 crumb :categories do
-  link "Категории", categories_path
+  link 'Категории', categories_path
 end
 
 # Category

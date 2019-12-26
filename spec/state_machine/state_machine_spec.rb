@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Advertisement do
-
-  let (:advertisement) {build(:advertisement) }
+  let(:advertisement) { build(:advertisement) }
 
   describe 'states' do
     describe ':draft' do

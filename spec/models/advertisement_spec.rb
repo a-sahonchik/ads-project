@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe Advertisement, type:  :model  do
-
+RSpec.describe Advertisement, type: :model do
   describe '#factory' do
     it 'is valid' do
       expect(build(:advertisement)).to be_valid
@@ -18,7 +19,10 @@ RSpec.describe Advertisement, type:  :model  do
     end
 
     context 'ad_title is too short' do
-      let(:advertisement) { build(:advertisement, ad_title: Faker::String.random(length: 1..4)) }
+      let(:advertisement) do
+        build(:advertisement,
+              ad_title: Faker::String.random(length: 1..4))
+      end
 
       it 'validates presence' do
         expect(advertisement).to_not be_valid
@@ -26,7 +30,10 @@ RSpec.describe Advertisement, type:  :model  do
     end
 
     context 'ad_title is too long' do
-      let(:advertisement) { build(:advertisement, ad_title: Faker::String.random(length: 51..60)) }
+      let(:advertisement) do
+        build(:advertisement,
+              ad_title: Faker::String.random(length: 51..60))
+      end
 
       it 'validates presence' do
         expect(advertisement).to_not be_valid
@@ -44,7 +51,10 @@ RSpec.describe Advertisement, type:  :model  do
     end
 
     context 'ad_text is too short' do
-      let(:advertisement) { build(:advertisement, ad_text: Faker::String.random(length: 1..99)) }
+      let(:advertisement) do
+        build(:advertisement,
+              ad_text: Faker::String.random(length: 1..99))
+      end
 
       it 'validates presence' do
         expect(advertisement).to_not be_valid
@@ -52,7 +62,10 @@ RSpec.describe Advertisement, type:  :model  do
     end
 
     context 'ad_text is too long' do
-      let(:advertisement) { build(:advertisement, ad_text: Faker::String.random(length: 1001..1010)) }
+      let(:advertisement) do
+        build(:advertisement,
+              ad_text: Faker::String.random(length: 1001..1010))
+      end
 
       it 'validates presence' do
         expect(advertisement).to_not be_valid

@@ -1,13 +1,10 @@
-class UsersController < ApplicationController
+# frozen_string_literal: true
 
+class UsersController < ApplicationController
   before_action :set_categories
-  before_action :set_advertisements, only: [:index, :edit]
+  before_action :set_advertisements, only: %i[index edit]
 
   load_and_authorize_resource
-
-  rescue_from CanCan::AccessDenied do |exception|
-    redirect_to request.referrer, alert: exception.message
-  end
 
   def index
     @users = User.all
@@ -15,7 +12,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @advertisements = Advertisement.where(user_id: @user.id).order("updated_at DESC")
+    @advertisements = @user.advertisements.order('updated_at DESC')
   end
 
   def new
@@ -38,21 +35,19 @@ class UsersController < ApplicationController
   end
 
   def update
-     @user = User.find(params[:id])
-     if @user.update(user_params)
-       redirect_to users_path
-     else
-       render 'edit'
-     end
-   end
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to users_path
+    else
+      render 'edit'
+    end
+  end
 
-   def destroy
+  def destroy
     @user = User.find(params[:id])
     @user.destroy
 
-    if @user.destroy
-        redirect_to users_path, notice: "Пользователь удален."
-    end
+    redirect_to users_path, notice: 'Пользователь удален.' if @user.destroy
   end
 
   private

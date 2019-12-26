@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -38,13 +40,13 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
@@ -59,49 +61,52 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
-#forms builder
+# forms builder
 gem 'simple_form'
 
-#breadcrumbs
-gem "gretel"
+# breadcrumbs
+gem 'gretel'
 
-#bootstrap
+# bootstrap
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 
-#pagination
+# pagination
 gem 'will_paginate', '~> 3.1.0'
 
-#filter
+# filter
 gem 'filterrific'
 
-#authorization and authentication
-gem 'devise'
+# authorization and authentication
 gem 'cancancan'
+gem 'devise'
 gem 'rolify'
 
-#testing
+# testing
 group :development, :test do
   gem 'rspec-rails'
 end
 
-#data generator
+# data generator
 gem 'faker'
 
-#setting up Ruby objects as test data
+# setting up Ruby objects as test data
 group :development, :test do
   gem 'factory_bot_rails'
 end
 
-#states
+# states
 gem 'state_machines-activerecord'
 
-#cron jobs
+# cron jobs
 gem 'whenever', require: false
 
-#multiple images download
+# multiple images download
 gem 'carrierwave'
-gem "rmagick"
 gem 'jquery-ui-rails'
+gem 'rmagick'
+
+# Ruby Style
+gem 'rubocop', require: false

@@ -1,7 +1,9 @@
-namespace :publish do
-  desc "Publish all approved advertisements."
+# frozen_string_literal: true
 
-  task :ads => :environment do
+namespace :publish do
+  desc 'Publish all approved advertisements.'
+
+  task ads: :environment do
     ads = Advertisement.where(state: :approved)
 
     ads.each do |a|

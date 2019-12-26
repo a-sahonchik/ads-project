@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Ability
   include CanCan::Ability
 
@@ -15,7 +17,7 @@ class Ability
       can :show, User
       can :show, Category
       can :manage, Advertisement, user_id: user.id
-      cannot :update, Advertisement, state: ['opened', 'rejected', 'approved', 'published', 'archived']
+      cannot :update, Advertisement, state: %w[opened rejected approved published archived]
       cannot :opened_advertisements, Advertisement
       can :destroy, Advertisement, user_id: user.id
     else
@@ -24,5 +26,4 @@ class Ability
       can :show, Category
     end
   end
-
 end
