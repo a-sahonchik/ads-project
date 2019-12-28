@@ -1,5 +1,5 @@
 h1
-  | Мои объявления
+  = t('advertisement.my')
 ul#myTab.nav.nav-tabs[role="tablist"]
   - @states.each do |state|
     li.nav-item
@@ -11,7 +11,7 @@ ul#myTab.nav.nav-tabs[role="tablist"]
         role = "tab"
         aria-controls = state
         aria-selected = (state == @states.first && "true")
-      ] = state.capitalize
+      ] = t("attributes.advertisement.states.#{state}")
 #myTabContent.tab-content
   - @states.each do |state|
     div [
@@ -23,4 +23,5 @@ ul#myTab.nav.nav-tabs[role="tablist"]
       - if @advertisements.where(state: state).any?
         = render partial: 'state_ads', :locals => { :state => state }
       - else
-        p No advertisements with state #{state}
+        p
+          = t('advertisement.missing', state: t("attributes.advertisement.states.#{state}"))

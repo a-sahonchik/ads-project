@@ -1,8 +1,8 @@
 - breadcrumb :advertisements, @advertisement
 h1
-  | Объявления
+  = t('advertisement.index.title')
 - if user_signed_in? && current_user.has_role?(:user)
-  = link_to 'Добавить объявление', new_advertisement_path, class: "btn btn-primary"
+  = link_to t('advertisement.create'), new_advertisement_path, class: "btn btn-primary"
 .card.card-body.bg-light
   - puts @filterrific.inspect
   = form_for_filterrific @filterrific do |f|
@@ -10,17 +10,17 @@ h1
       .col-md-6
         .form-group
           label.font-weight-bold
-            | Тип объявления
-          = f.select :with_category_id, @filterrific.select_options[:with_category_id], {:include_blank => '- Тип -'} , :class => 'form-control'
+            = t('advertisement.type')
+          = f.select :with_category_id, @filterrific.select_options[:with_category_id], {:include_blank => t('advertisement.select_type')} , :class => 'form-control'
       .col-md-6
         .form-group
           label.font-weight-bold
-            | Сортировка
+            = t('advertisement.sorting')
           = f.select :sorted_by, @filterrific.select_options[:sorted_by], {}, :class => 'form-control'
     .filter-navigation
       .col-md-10
         = page_entries_info @advertisements, :model => 'advertisement', :class => 'align-middle'
       .col-md-2
-        = link_to "Сбросить фильр", reset_filterrific_url, :class => 'btn btn-secondary'
+        = link_to t('filter.reset'), reset_filterrific_url, :class => 'btn btn-secondary'
 #results
   = render :partial => 'advertisements/list'

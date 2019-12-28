@@ -1,6 +1,6 @@
 - breadcrumb @category
 h1
-  = @category.name
+  = t("attributes.category.id.#{@category.id}")
 = will_paginate @advertisements, renderer: 'BootstrapPaginationHelper::LinkRenderer'
 = render '/advertisements/advertisements'
 = will_paginate @advertisements, renderer: 'BootstrapPaginationHelper::LinkRenderer'

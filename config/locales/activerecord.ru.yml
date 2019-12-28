@@ -1,0 +1,31 @@
+ru:
+  activerecord:
+    errors:
+      models:
+        advertisement:
+          attributes:
+            ad_title:
+              blank: 'должно быть заполнено.'
+              too_short: 'слишком короткое.'
+              too_long: 'слишком длинное.'
+            ad_text:
+              blank: 'должнен быть заполнен.'
+              too_short: 'слишком короткий.'
+              too_long: 'слишком длинный.'
+            category_id:
+              blank: 'должна быть выбрана.'
+        user:
+          attributes:
+            email:
+              invalid: 'неверный.'
+              blank: 'не может быть пустым.'
+            username:
+              blank: 'не может быть пустым.'
+            password:
+              blank: 'не может быть пустым.'
+              too_short: 'слишком короткий.'
+    attributes:
+      advertisement:
+        ad_title: 'Название объявления'
+        ad_text: 'Текст объявления'
+        category_id: 'Категория'

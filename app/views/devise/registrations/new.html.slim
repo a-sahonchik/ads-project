@@ -1,0 +1,16 @@
+h1
+  = t('user.sign_up.title')
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  = f.input :email,
+                 required: true,
+                 autofocus: true,
+                 input_html: { autocomplete: "email" }
+  = f.input :password,
+                 required: true,
+                 hint: (t('user.sign_up.password_hint', min_pass_length: @minimum_password_length ) if @minimum_password_length),
+                 input_html: { autocomplete: "new-password" }
+  = f.input :password_confirmation,
+                 required: true,
+                 input_html: { autocomplete: "new-password" }
+  = f.button :submit, value: t('user.sign_up.button'), class: "btn btn-primary"
+= render "devise/shared/links"

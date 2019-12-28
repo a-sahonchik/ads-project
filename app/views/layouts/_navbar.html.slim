@@ -7,22 +7,20 @@
     #navbarSupportedContent.collapse.navbar-collapse
       ul.navbar-nav.mr-auto
         li.nav-item
-          a.nav-link[href=advertisements_path]
-            | Объявления
+          = link_to t('models.advertisements'), advertisements_path, class: 'nav-link'
         li.nav-item.dropdown
           a#navbarDropdown.nav-link.dropdown-toggle[href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
-            | Типы
+            = t('models.categories')
           .dropdown-menu[aria-labelledby="navbarDropdown"]
             - @categories.each do |category|
-                a.nav-link[href=category_path(category)]
-                  = category.name
+              = link_to t("attributes.category.id.#{category.id}"), category_path(category), class: 'nav-link'
         - if user_signed_in? && current_user.has_role?(:admin)
           li.nav-item
-            = link_to "Пользователи", users_path, class: "nav-link"
+            = link_to t('models.users'), users_path, class: "nav-link"
           li.nav-item
-            = link_to "Все типы", categories_path, class: "nav-link"
+            = link_to t('models.categories'), categories_path, class: "nav-link"
           li.nav-item
-            = link_to "Новые объявления", opened_advertisements_path, class: "nav-link"
+            = link_to t('navigation.new_advertisements'), opened_advertisements_path, class: "nav-link"
       ul.navbar-nav.float-right
         - if user_signed_in?
           li.nav-item.dropdown
@@ -30,12 +28,16 @@
               = current_user.email
             .dropdown-menu[aria-labelledby="navbarDropdown"]
               - if current_user.has_role?(:user)
-                = link_to 'Мои объявления', custom_user_advertisements_path, class: "dropdown-item"
-              = link_to 'Редактировать профиль', edit_user_registration_path, class: "dropdown-item"
+                = link_to t('navigation.my_advertisements'), custom_user_advertisements_path, class: "dropdown-item"
+              = link_to t('devise.links.edit_profile'), edit_user_registration_path, class: "dropdown-item"
               .dropdown-divider
-              = link_to "Выход", destroy_user_session_path, method: :delete, class: "dropdown-item"
+              = link_to t('devise.links.sign_out'), destroy_user_session_path, method: :delete, class: "dropdown-item"
         - else
           li.nav-item
-            = link_to 'Вход', new_user_session_path, class: "nav-link"
+            = link_to t('devise.links.sign_in'), new_user_session_path, class: "nav-link"
           li.nav-item
-            = link_to 'Регистрация', new_user_registration_path, class: "nav-link"
+            = link_to t('devise.links.sign_up'), new_user_registration_path, class: "nav-link"
+        li class = (I18n.locale == :ru ? "nav-item active" : "nav-item")
+          = link_to "RU", { locale: :ru }, class: "nav-link"
+        li class = (I18n.locale == :en ? "nav-item active" : "nav-item")
+          = link_to "EN", { locale: :en }, class: "nav-link"

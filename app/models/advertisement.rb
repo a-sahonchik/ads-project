@@ -48,8 +48,8 @@ class Advertisement < ApplicationRecord
 
   def self.options_for_sorted_by
     [
-      ['Сначала новые', 'created_at_desc'],
-      ['Сначала старые', 'created_at_asc']
+      [I18n.t('filter.new_first'), 'created_at_desc'],
+      [I18n.t('filter.old_first'), 'created_at_asc']
     ]
   end
 end

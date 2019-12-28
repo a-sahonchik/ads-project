@@ -1,0 +1,41 @@
+ru:
+  simple_form:
+    "yes": 'Да'
+    "no": 'Нет'
+    more_images: 'Больше изображений'
+    required:
+      text: 'Обязательно'
+      mark: '*'
+    placeholders:
+      advertisement:
+        ad_title: 'Введите название объявления'
+        ad_text: 'Введите текст объявления'
+      category:
+        select: '- Выберите категорию -'
+        name: 'Введите название категории'
+      user:
+        email: 'Введите Email'
+        username: 'Введите имя пользователя'
+        password: 'Введите пароль'
+        current_password: 'Введите текущий пароль'
+        password_confirmation: 'Введите пароль еще раз'
+    options:
+      category_id:
+        1: 'Покупка'
+        2: 'Продажа'
+        3: 'Аренда'
+        4: 'Работа'
+    labels:
+      category:
+        name: 'Название'
+      user:
+        username: 'Имя пользователя'
+        password: 'Пароль'
+        roles: 'Роль'
+        remember_me: 'Запомнить меня'
+        password_confirmation: 'Подтвердите пароль'
+        current_password: 'Текущий пароль'
+  helpers:
+    submit:
+      create: 'Сохранить'
+      update: 'Обновить'

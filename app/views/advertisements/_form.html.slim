@@ -1,7 +1,7 @@
 = simple_form_for @advertisement, html: { multipart: true } do |f|
-  = f.input :ad_title, label: 'Название объявления', placeholder: 'Введите название объявления'
-  = f.input :ad_text, label: 'Текст объявления', hint: "", hint_html: { id: "ads_text_length" }, placeholder: 'Введите текст объявления', input_html: { id: 'ads_text', onkeyup: 'advertisement_text_length()' }
-  = f.input :category_id, collection: Category.order(:name), label: 'Выберите категорию'
+  = f.input :ad_title
+  = f.input :ad_text, hint: "", hint_html: { id: "ads_text_length" }, input_html: { id: 'ads_text', onkeyup: 'advertisement_text_length()' }
+  = f.input :category_id, collection: Category.order(:name), :include_blank => t('simple_form.placeholders.category.select')
   .field
     .image-sortable
       - @advertisement.pictures.each do |picture|
@@ -9,10 +9,10 @@
           = hidden_field :advertisement, :pictures, multiple: true, value:  picture.cache_name || picture.identifier
           = image_tag picture.url(:thumb)
           button.remove-image.btn.btn-outline-danger[type="button"]
-            | Удалить
+            = t('common.delete')
       .image
         = f.file_field :pictures, multiple: true
     button.add-image.btn.btn-primary[type="button"]
-      | Ещё картинки!
-  = f.button :submit, value: 'Сохранить', class: 'btn btn-primary'
-  = link_to 'Назад', :back, class: 'btn btn-outline-secondary'
+      =t('simple_form.more_images')
+  = f.button :submit, class: 'btn btn-primary'
+  = link_to t('common.back'), :back, class: 'btn btn-outline-secondary'

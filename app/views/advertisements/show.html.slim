@@ -5,10 +5,10 @@ article.advertisement-card
       = @advertisement.ad_title
     small
       time
-        = @advertisement.created_at.to_date.strftime("%d %B, %Y")
+        = @advertisement.created_at.to_date.strftime("%d %B, %Y ")
       span
         | [
-        = @advertisement.state
+        = t("attributes.advertisement.states.#{@advertisement.state}")
         | ]
   section.advertisement-body
     - if @advertisement.pictures.any?
@@ -20,21 +20,21 @@ article.advertisement-card
       = @advertisement.ad_text
   section.advertisement-author
     p
-      | Автор:
+      = t('advertisement.author')
       = link_to @advertisement.user.username, @advertisement.user
   section.ads-btn
     - if user_signed_in?
       - if @advertisement.can_be_drafted?(current_user)
-        = link_to 'Перенести в черновик', [@advertisement, advertisement: {state_event: :change}], method: :patch, class: 'btn btn-primary'
+        = link_to t('advertisement.events.change'), [@advertisement, advertisement: {state_event: :change}], method: :patch, class: 'btn btn-primary'
       - if @advertisement.can_be_started?(current_user)
-        = link_to 'Отправить на модерацию', [@advertisement, advertisement: {state_event: :start}], method: :patch, class: 'btn btn-primary'
+        = link_to t('advertisement.events.start'), [@advertisement, advertisement: {state_event: :start}], method: :patch, class: 'btn btn-primary'
       - if @advertisement.can_be_approved_or_rejected?(current_user)
-        = link_to 'Одобрить', [@advertisement, advertisement: {state_event: :approve}], method: :patch, class: 'btn btn-success'
-        = link_to 'Отклонить', [@advertisement, advertisement: {state_event: :reject}], method: :patch, class: 'btn btn-danger'
+        = link_to t('advertisement.events.approve'), [@advertisement, advertisement: {state_event: :approve}], method: :patch, class: 'btn btn-success'
+        = link_to t('advertisement.events.reject'), [@advertisement, advertisement: {state_event: :reject}], method: :patch, class: 'btn btn-danger'
       - if @advertisement.can_be_edited?(current_user)
-        = link_to 'Редактировать', edit_advertisement_path, class: "btn btn-warning"
+        = link_to t('common.edit'), edit_advertisement_path, class: "btn btn-warning"
       - if @advertisement.can_be_deleted?(current_user)
-        = link_to 'Удалить', advertisement_path,
+        = link_to t('common.delete'), advertisement_path,
                              method: :delete,
                              class: 'btn btn-outline-danger',
                              data: { confirm: 'Вы уверены?' }

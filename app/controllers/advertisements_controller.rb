@@ -37,18 +37,18 @@ class AdvertisementsController < ApplicationController
     @advertisement.user = current_user
 
     if @advertisement.save
-      redirect_to @advertisement, success: 'Объявление успешно создано'
+      redirect_to @advertisement, success: I18n.t('advertisement.create_action.success')
     else
-      flash[:danger] = 'Ошибка при создании объявления'
+      flash[:danger] = I18n.t('advertisement.create_action.danger')
       render 'new'
     end
   end
 
   def update
     if @advertisement.update(advertisement_params)
-      redirect_to @advertisement, success: 'Объявление успешно изменено'
+      redirect_to @advertisement, success: I18n.t('advertisement.edit.success')
     else
-      flash[:danger] = 'Ошибка при изменении объявления'
+      flash[:danger] = I18n.t('advertisement.edit.danger')
       render 'edit'
     end
   end
@@ -56,7 +56,7 @@ class AdvertisementsController < ApplicationController
   def destroy
     @advertisement.destroy
 
-    redirect_to advertisements_path, success: 'Объявление успешно удалено'
+    redirect_to advertisements_path, success: I18n.t('advertisement.destroy.success')
   end
 
   def user_advertisements

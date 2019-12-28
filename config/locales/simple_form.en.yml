@@ -2,30 +2,40 @@ en:
   simple_form:
     "yes": 'Yes'
     "no": 'No'
+    more_images: 'More images'
     required:
-      text: 'required'
+      text: 'Required'
       mark: '*'
-      # You can uncomment the line below if you need to overwrite the whole required html.
-      # When using html, text and mark won't be used.
-      # html: '<abbr title="required">*</abbr>'
-    error_notification:
-      default_message: "Please review the problems below:"
-    # Examples
-    # labels:
-    #   defaults:
-    #     password: 'Password'
-    #   user:
-    #     new:
-    #       email: 'E-mail to sign in.'
-    #     edit:
-    #       email: 'E-mail.'
-    # hints:
-    #   defaults:
-    #     username: 'User name to sign in.'
-    #     password: 'No special characters, please.'
-    # include_blanks:
-    #   defaults:
-    #     age: 'Rather not say'
-    # prompts:
-    #   defaults:
-    #     age: 'Select your age'
+    placeholders:
+      advertisement:
+        ad_title: 'Inpud ad title'
+        ad_text: 'Inpud ad text'
+      category:
+        select: '- Select category -'
+        name: 'Input category title'
+      user:
+        email: 'Input Email'
+        username: 'Input username'
+        password: 'Input password'
+        current_password: 'Input current password'
+        password_confirmation: 'Input your password again'
+    options:
+      category_id:
+        1: 'Purchase'
+        2: 'Sale'
+        3: 'Rental'
+        4: 'Jobs'
+    labels:
+      category:
+        name: 'Title'
+      user:
+        username: 'Username'
+        password: 'Password'
+        roles: 'Role'
+        remember_me: 'Remember me'
+        password_confirmation: 'Password confirmation'
+        current_password: 'Сurrent password'
+  helpers:
+    submit:
+      create: 'Create'
+      update: 'Update'

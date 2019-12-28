@@ -1,16 +1,16 @@
 h1
-  | Пользователи
+  = t('models.users')
 table.table
   thead.thead-light
     tr
       th[scope="col"]
         | #
       th[scope="col"]
-        | Имя пользователя
+        = t('attributes.user.username')
       th[scope="col"]
         | Email
       th[scope="col"]
-        | Роль
+        = t('attributes.user.role')
       th[scope="col"]
   tbody
     - @users.each_with_index do |user, index|
@@ -24,8 +24,8 @@ table.table
         td
           = user.roles.first.name
         td
-          = link_to "Редактировать", edit_user_path(user), class: 'btn btn-warning'
-          = link_to 'Удалить', admin_destroy_user_path(user), class: 'btn btn-danger',
+          = link_to t('common.edit'), edit_user_path(user), class: 'btn btn-warning'
+          = link_to t('common.delete'), admin_destroy_user_path(user), class: 'btn btn-danger',
                          method: :delete,
                          data: { confirm: 'Вы уверены?' }
-= link_to "Добавить пользователя", new_user_path, class: 'btn btn-primary'
+= link_to t('devise.links.create_user'), new_user_path, class: 'btn btn-primary'

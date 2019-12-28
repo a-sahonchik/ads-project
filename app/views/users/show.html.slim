@@ -1,5 +1,3 @@
 h1
-  | Объявления пользователя "
-  = @user.username
-  |"
+  = t('user.user_ads', username: @user.username)
 = render 'advertisements/advertisements'

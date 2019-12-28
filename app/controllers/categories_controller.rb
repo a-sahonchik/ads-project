@@ -22,29 +22,29 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
 
     if @category.save
-      redirect_to categories_path, success: 'Тип успешно добавлен'
+      redirect_to categories_path, success: I18n.t('category.actions.create.success')
     else
-      flash[:danger] = 'Ошибка при создании типа'
+      flash[:danger] = I18n.t('category.actions.create.danger')
       render 'new'
     end
   end
 
   def update
     if @category.update(category_params)
-      redirect_to categories_path, success: 'Тип успешно изменен'
+      redirect_to categories_path, success: I18n.t('category.actions.update.success')
     else
-      flash[:danger] = 'Ошибка при изменении типа'
+      flash[:danger] = I18n.t('category.actions.update.danger')
       render 'edit'
     end
   end
 
   def destroy
     if @category.advertisements.any?
-      redirect_to categories_path, danger: 'Нельзя удалить, есть вложенные объявления!'
+      redirect_to categories_path, danger: I18n.t('category.actions.destroy.danger')
     else
       @category.destroy
 
-      redirect_to categories_path, success: 'Тип успешно удален'
+      redirect_to categories_path, success: I18n.t('category.actions.destroy.success')
     end
   end
 

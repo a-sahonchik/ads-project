@@ -1,0 +1,7 @@
+en:
+  activerecord:
+    attributes:
+      advertisement:
+        ad_title: 'Ad title'
+        ad_text: 'Ad text'
+        category_id: 'Category'

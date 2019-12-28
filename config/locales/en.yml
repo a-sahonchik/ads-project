@@ -1,33 +1,106 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  common:
+    back: 'Back'
+    edit: 'Edit'
+    delete: 'Delete'
+    save: 'Save'
+  filter:
+    reset: 'Reset'
+    new_first: 'Newest first'
+    old_first: "Oldest first"
+  models:
+    advertisements: 'Advertisements'
+    advertisement: 'Advertisement'
+    users: 'Users'
+    user: 'User'
+    category: 'Category'
+    category: 'Category'
+  attributes:
+    advertisement:
+      ad_title: 'Ad title'
+      ad_text: 'Ad text'
+      category_id: 'Category'
+      states:
+        draft: 'Draft'
+        opened: 'Opened'
+        rejected: 'Rejected'
+        approved: 'Approved'
+        published: 'Published'
+        archived: 'Archived'
+    user:
+      username: 'Username'
+      password: 'Password'
+      role: 'Role'
+      roles:
+        user: 'User'
+        admin: 'Admin'
+    category:
+      name: 'Title'
+      id:
+        1: 'Purchase'
+        2: 'Sale'
+        3: 'Rental'
+        4: 'Jobs'
+  advertisement:
+    author: 'Author: '
+    create: 'Create advertisement'
+    type: 'Type'
+    select_type: '- Select type -'
+    last: 'Last advertisements'
+    sorting: 'Sorting'
+    missing: "No advertisements with state \"%{state}\""
+    my: 'My advertisements'
+    index:
+      title: 'Advertisements'
+    new:
+      title: 'New advertisement'
+    create_action:
+      success: 'Advertisement successfully created'
+      danger: 'Error during creating an advertisement'
+    edit:
+      title: 'Edit advertisement'
+      success: 'Advertisement successfully updated'
+      danger: 'Error during updating an advertisement'
+    destroy:
+      success: 'Advertisement successfully destroyed'
+    events:
+      start: 'Send for moderation'
+      reject: 'Reject'
+      approve: 'Approve'
+      publish: 'Publish'
+      archive: 'Archive'
+      change: 'To draft'
+  user:
+    user_ads: "Advertisements of user %{username}"
+    create: 'Create user'
+    login: 'Log in'
+    new:
+      title: 'New user'
+    edit:
+      title: 'Edit user'
+      edit_profile: 'Edit profile'
+      pas_hint: "Leave blank if you don't want to change your current password"
+      cur_pas_hint: "Input current password to save changes"
+      delete: 'Delete my account'
+    sign_in:
+      title: 'Sign in'
+    sign_up:
+      title: 'Sign up'
+      password_hint: "(Minimum is %{min_pass_length} symbols)"
+      button: 'Sign up'
+  category:
+    create: 'Create category'
+    actions:
+      create:
+        success: 'Category successfully created'
+        danger: 'Error during creating category'
+      update:
+        success: 'Category successfully updated'
+        danger: 'Error during updating category'
+      destroy:
+        success: 'Category successfully deleted'
+        danger: 'Cant destroy category with related advertisements'
+    new:
+      title: 'New category of advertisements'
+    edit:
+      title: 'Edit category of advertisements'

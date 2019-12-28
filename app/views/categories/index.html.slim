@@ -1,14 +1,14 @@
 h1
-  | Типы объявлений
+  = t('models.categories')
 table.table
   thead.thead-light
     tr
       th[scope="col"]
         | #
       th[scope="col"]
-        | Тип
+        = t('models.category')
       th[scope="col"]
-        | Объявлений
+        = t('models.advertisements')
       th[scope="col"]
   tbody
     - @categories.each_with_index do |category, index|
@@ -16,12 +16,12 @@ table.table
         th[scope="row"]
           = index + 1
         td
-          = link_to category.name, category_path(category)
+          = link_to t("attributes.category.id.#{category.id}"), category_path(category)
         td
           = category.advertisements.count
         td
-          = link_to "Редактировать", edit_category_path(category), class: 'btn btn-warning'
-          = link_to 'Удалить', category_path(category), class: 'btn btn-danger',
+          = link_to t('common.edit'), edit_category_path(category), class: 'btn btn-warning'
+          = link_to t('common.delete'), category_path(category), class: 'btn btn-danger',
                          method: :delete,
                          data: { confirm: 'Are you sure?' }
-= link_to "Добавить тип", new_category_path, class: 'btn btn-primary'
+= link_to t('category.create'), new_category_path, class: 'btn btn-primary'
