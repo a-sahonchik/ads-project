@@ -116,3 +116,8 @@ gem 'slim'
 
 #full text search
 gem 'elasticsearch-model'
+
+#solving N+1 problem
+group :development, :test do
+  gem "bullet"
+end

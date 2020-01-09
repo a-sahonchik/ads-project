@@ -39,6 +39,18 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
+
+  if Bullet.enable?
+    config.before(:each) do
+      Bullet.start_request
+    end
+
+    config.after(:each) do
+      Bullet.perform_out_of_channel_notifications if Bullet.notification?
+      Bullet.end_request
+    end
+  end
+
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
   config.include Devise::Test::ControllerHelpers, type: :controller
