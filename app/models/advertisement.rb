@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Advertisement < ApplicationRecord
+  include AdsSearch
   include StateMachine
 
   resourcify

@@ -1,0 +1,27 @@
+- if @results
+  p
+    = t('search_results')
+    = " #{@results.count} "
+
+  - if @results.respond_to? :response and (suggestion = autosuggest_aggregate(@results.response.suggest, [:ad_title, :ad_text], params[:query]))
+    p
+      = t('search_instead')
+      = link_to suggestion, search_path( query: suggestion )
+
+  - @results.each do |advertisement|
+    article
+      - if advertisement.highlight.ad_text && advertisement.highlight.ad_title
+        h3 = link_to advertisement.highlight.ad_title.to_a.join(' ').html_safe, advertisement_path(advertisement.id)
+        p = raw advertisement.highlight.ad_text.to_a.join(' ')
+      - elsif advertisement.highlight.ad_title
+        h3 =  link_to advertisement.highlight.ad_title.to_a.join(' ').html_safe, advertisement_path(advertisement.id)
+        p = raw truncate(advertisement.ad_text, length: 300)
+      - elsif advertisement.highlight.ad_text
+        h3 =  link_to advertisement.ad_title, advertisement_path(advertisement.id)
+        p = raw advertisement.highlight.ad_text.to_a.join(' ')
+      - else
+        h3 =  link_to advertisement.ad_title, advertisement_path(advertisement.id)
+        p = raw truncate(advertisement.ad_text, length: 300)
+- else
+  p
+    = t('enter_search_term')

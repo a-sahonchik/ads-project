@@ -21,6 +21,8 @@
             = link_to t('models.categories'), categories_path, class: "nav-link"
           li.nav-item
             = link_to t('navigation.new_advertisements'), opened_advertisements_path, class: "nav-link"
+        li.nav-item
+          = link_to t('search'), search_path, class: "nav-link"
       ul.navbar-nav.float-right
         - if user_signed_in?
           li.nav-item.dropdown

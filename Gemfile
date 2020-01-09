@@ -113,3 +113,6 @@ gem 'rubocop', require: false
 
 # Slim views
 gem 'slim'
+
+#full text search
+gem 'elasticsearch-model'
