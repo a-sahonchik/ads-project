@@ -5,6 +5,7 @@ h1
                  required: true,
                  autofocus: true,
                  input_html: { autocomplete: "email" }
+  = f.input :username, required: true, autofocus: true
   = f.input :password,
                  required: true,
                  hint: (t('user.sign_up.password_hint', min_pass_length: @minimum_password_length ) if @minimum_password_length),

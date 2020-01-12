@@ -33,8 +33,7 @@ class AdvertisementsController < ApplicationController
   def edit; end
 
   def create
-    @advertisement = Advertisement.new(advertisement_params)
-    @advertisement.user = current_user
+    @advertisement = current_user.advertisements.new(advertisement_params)
 
     if @advertisement.save
       redirect_to @advertisement, success: I18n.t('advertisement.create_action.success')

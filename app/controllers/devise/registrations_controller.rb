@@ -4,10 +4,9 @@ class Devise::RegistrationsController < DeviseController
   prepend_before_action :require_no_authentication, only: %i[new create cancel]
   prepend_before_action :authenticate_scope!, only: %i[edit update destroy]
   prepend_before_action :set_minimum_password_length, only: %i[new edit]
-
+  before_action :set_categories, only: %i[new create]
   # GET /resource/sign_up
   def new
-    @categories = Category.all
     build_resource
     yield resource if block_given?
     respond_with resource
@@ -168,5 +167,9 @@ class Devise::RegistrationsController < DeviseController
     return true if account_update_params[:password].blank?
 
     Devise.sign_in_after_change_password
+  end
+
+  def set_categories
+    @categories = Category.all
   end
 end
